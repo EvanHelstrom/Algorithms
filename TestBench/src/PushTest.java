@@ -5,35 +5,45 @@ public class PushTest {
 
 	public static void main(String[] args) {
 		double runtime = 0;
-		double listTotalTime = 0;
-		double linkTotalTime = 0;
-		int runs = 0;
 		double index = 1;
-		while(runtime < 5000) {
+		boolean exe = true;
+		while(exe) {
 			int number = (int) Math.pow(2.00, index);
-			ArrayList<Integer> testList = new ArrayList<Integer>(number);
-			testList = RandomGenerator.generateArrayList(0, 10, number);
-			long start = System.currentTimeMillis();
-			int lastDigit = testList.get(testList.size()-1);
-			testList.add(0, );
-			testList.set(0, lastDigit);
-			long end = System.currentTimeMillis();
-			runtime = end - start;
-			arrayTotalTime += runtime;
-			System.out.println("List: The average time is " + arrayTotalTime/(index-1) + " milliseconds at index " + index);
-		
-			LinkedList<Integer> testLinked = new LinkedList<Integer>();
-			testLinked = RandomGenerator.generateLinkedList(0, 10, number);
-			start = System.currentTimeMillis();
-			lastDigit = testLinked.get(testLinked.size()-1);
-			for(int x = testLinked.size() - 1; x > 0; x--) {
-				testLinked.set(x, testLinked.get(x-1));
+			
+			double min = 99999999;
+			double max = 0;
+			double singleTime = 0;
+			for(int y = 0; y < 10; y++) {
+				ArrayList<Integer> testList = new ArrayList<Integer>(number);
+				testList = RandomGenerator.generateArrayList(0, 10, number);
+				long start = System.currentTimeMillis();
+				testList.add(0, 1);
+				long end = System.currentTimeMillis();
+				runtime = end - start;
+				if(y == 0 || runtime < min){min = runtime;}
+				if(y == 0 || runtime > max){max = runtime;}
+				singleTime += runtime;
+				if(runtime > 5000) {exe = false;}
 			}
-			testLinked.set(0, lastDigit);
-			end = System.currentTimeMillis();
-			runtime = end - start;
-			linkTotalTime += runtime;
-			System.out.println("LinkedList: The average time is " + linkTotalTime/(index-1) + " milliseconds at index " + index);
+			System.out.println("ArrayList - Size: " + (number) + " - Min: " + min + " - Max: " + max + " - Avg: " + (singleTime/10));
+		
+			
+			min = 99999999;
+			max = 0;
+			singleTime = 0;
+			for(int y = 0; y < 10; y++) {
+				LinkedList<Integer> testLinked = new LinkedList<Integer>();
+				testLinked = RandomGenerator.generateLinkedList(0, 10, number);
+				long start = System.currentTimeMillis();
+				testLinked.addFirst(1);
+				long end = System.currentTimeMillis();
+				runtime = end - start;
+				if(y == 0 || runtime < min){min = runtime;}
+				if(y == 0 || runtime > max){max = runtime;}
+				singleTime += runtime;
+				if(runtime > 5000) {exe = false;}
+			}
+			System.out.println("LinkedList - Size: " + (number) + " - Min: " + min + " - Max: " + max + " - Avg: " + (singleTime/10));
 			index++;
 			}
 		System.out.println("Runtime exceeded!");
