@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class RandomGenerator {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		if(args.length > 0) {
 		if(args[0].equals("array")){
 			generateArray(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]));
@@ -25,7 +23,7 @@ public class RandomGenerator {
 		for(int i = 0; i < number; i++) {
 			int rand = (int) (Math.random() * (max - min + 1) + min);
 			output.add(rand);
-			System.out.println(rand);
+			//System.out.println(rand);
 		}	
 		return output;
 	}
@@ -34,7 +32,7 @@ public class RandomGenerator {
 		for(int i = 0; i < number; i ++) {
 			int rand = (int) (Math.random() * (max - min + 1) + min);
 			output.add(rand);
-			System.out.println(rand);
+			//System.out.println(rand);
 		}
 		return output;
 	}
@@ -43,7 +41,7 @@ public class RandomGenerator {
 		for(int i = 0; i < number; i++) {
 			int rand = (int) (Math.random() * (max - min + 1) + min);
 			output[i] = rand;
-			System.out.println(rand);
+			//System.out.println(rand);
 		}
 		return output;
 	}
