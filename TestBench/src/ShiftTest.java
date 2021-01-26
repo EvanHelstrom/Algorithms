@@ -26,12 +26,16 @@ public class ShiftTest {
 				singleTime += runtime;
 			}
 			System.out.println("Array - Size: " + (number) + " - Min: " + min + " - Max: " + max + " - Avg: " + (singleTime/10));
-			
+			index++;
+		}
+		System.out.println("Runtime exceeded!");
+		while(runtime < 5000) {
+			int number = (int) Math.pow(2.00, index);
 			ArrayList<Integer> testList = new ArrayList<Integer>(number);
 			testList = RandomGenerator.generateArrayList(0, 10, number);
-			min = 99999999;
-			max = 0;
-			singleTime = 0;
+			double min = 99999999;
+			double max = 0;
+			double singleTime = 0;
 			for(int y = 0; y < 10; y++) {
 				
 				long start = System.currentTimeMillis();
@@ -47,12 +51,16 @@ public class ShiftTest {
 				singleTime += runtime;
 			}
 			System.out.println("ArrayList - Size: " + (number) + " - Min: " + min + " - Max: " + max + " - Avg: " + (singleTime/10));
-		
+			index++;
+		}
+		System.out.println("Runtime exceeded!");
+		while(runtime < 5000) {
+			int number = (int) Math.pow(2.00, index);
 			LinkedList<Integer> testLinked = new LinkedList<Integer>();
 			testLinked = RandomGenerator.generateLinkedList(0, 10, number);
-			min = 99999999;
-			max = 0;
-			singleTime = 0;
+			double min = 99999999;
+			double max = 0;
+			double singleTime = 0;
 			for(int y = 0; y < 10; y++) {
 				long start = System.currentTimeMillis();
 				int lastDigit = testLinked.get(testLinked.size()-1);
