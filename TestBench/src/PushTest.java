@@ -28,6 +28,7 @@ public class PushTest {
 			index++;
 		}
 		System.out.println("Runtime exceeded!");
+		exe = true;
 		while(exe) {
 			int number = (int) Math.pow(2.00, index);
 			double min = 99999999;
